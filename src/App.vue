@@ -1,11 +1,7 @@
-<script setup>
-import { ElButton } from 'element-plus'
-</script>
+<script setup></script>
 
 <template>
-  <el-button type="primary">primary</el-button>
-  <!-- <RouterView /> -->
-  <div class="test">scss test</div>
+  <router-view></router-view>
 </template>
 
 <style lang="scss">

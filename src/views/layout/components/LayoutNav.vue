@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import { ElPopconfirm } from 'element-plus'
+</script>
 
 <template>
   <nav class="app-topnav">
