@@ -8,11 +8,10 @@ const router = createRouter({
     {
       path: '/',
       component: LayoutPage,
-      redirect: '/home',
       children: [
-        { path: '/home', component: HomePage },
+        { path: '/', component: HomePage },
         {
-          path: '/category',
+          path: '/category/:id',
           component: () => import('@/views/category/index.vue')
         }
       ]
