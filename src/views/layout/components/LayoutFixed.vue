@@ -105,7 +105,7 @@ const categoryStory = useCategoryStore()
       }
     }
 
-    .active {
+    :deep(.active) {
       color: $xtxColor;
       border-bottom: 1px solid $xtxColor;
     }

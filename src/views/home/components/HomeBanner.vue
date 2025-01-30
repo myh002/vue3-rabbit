@@ -1,7 +1,7 @@
 <script setup>
-import { getBannerAPI } from '@/apis/home'
 import { ElCarousel, ElCarouselItem } from 'element-plus'
 import { ref } from 'vue'
+import { getBannerAPI } from '@/apis/home'
 
 const bannerList = ref([])
 

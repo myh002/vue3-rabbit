@@ -12,6 +12,8 @@ useCategoryStore().getCategoryList()
   <LayoutFixed></LayoutFixed>
   <LayoutNav />
   <LayoutHeader />
+  <!-- 添加key，更新时强制销毁组件 -->
+  <!-- <RouterView :key="$route.fullPath" /> -->
   <RouterView />
   <LayoutFooter />
 </template>
