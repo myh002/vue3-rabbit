@@ -44,7 +44,7 @@ const tabChange = () => {
   getGoodList()
 }
 const load = async () => {
-  console.log('load加载了')
+  // console.log('load加载了')
   reqData.value.page++
   const {
     data: { result }
@@ -78,7 +78,7 @@ const load = async () => {
       <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
         <!-- 商品列表-->
         <GoodsItem v-for="good in goodList.items" :key="good.id" :good="good"></GoodsItem>
-        <p v-if="disabled">我也是有底线的</p>
+        <p class="tip" v-if="disabled">我也是有底线的</p>
       </div>
     </div>
   </div>
@@ -100,6 +100,10 @@ const load = async () => {
     padding: 0 10px;
   }
 
+  .tip {
+    text-align: center;
+    width: 100%;
+  }
   .goods-item {
     display: block;
     width: 220px;
