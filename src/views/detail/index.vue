@@ -1,4 +1,5 @@
 <script setup>
+import XtxSku from '@/components/XtxSku/index.vue'
 import ImageView from '@/components/ImageView/index.vue'
 import { ElBreadcrumb, ElBreadcrumbItem, ElButton } from 'element-plus'
 import { getGoodsDetailAPI } from '@/apis/detail'
@@ -13,6 +14,11 @@ const getDetail = async () => {
   // console.log(goods.value.categories[1])
 }
 getDetail()
+
+// sku组件
+const skuChange = (sku) => {
+  console.log(sku)
+}
 </script>
 
 <template>
@@ -36,7 +42,7 @@ getDetail()
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-              <ImageView></ImageView>
+              <ImageView :image-list="goods.mainPictures"></ImageView>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
@@ -85,7 +91,7 @@ getDetail()
                 </dl>
               </div>
               <!-- sku组件 -->
-
+              <XtxSku :goods="goods" @change="skuChange"></XtxSku>
               <!-- 数据组件 -->
 
               <!-- 按钮组件 -->
