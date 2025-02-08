@@ -1,6 +1,4 @@
 <script setup>
-import XtxSku from '@/components/XtxSku/index.vue'
-import ImageView from '@/components/ImageView/index.vue'
 import { ElBreadcrumb, ElBreadcrumbItem, ElButton } from 'element-plus'
 import { getGoodsDetailAPI } from '@/apis/detail'
 import { useRoute } from 'vue-router'
@@ -42,7 +40,7 @@ const skuChange = (sku) => {
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-              <ImageView :image-list="goods.mainPictures"></ImageView>
+              <XtxImageView :image-list="goods.mainPictures"></XtxImageView>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
