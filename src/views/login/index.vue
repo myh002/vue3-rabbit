@@ -1,6 +1,8 @@
 <script setup>
-import { ElForm, ElFormItem, ElInput, ElCheckbox, ElButton } from 'element-plus'
+import { useUserStore } from '@/stores/user'
+import { ElForm, ElFormItem, ElInput, ElCheckbox, ElButton, ElMessage } from 'element-plus'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 // 表单校验
 const formModel = ref({
@@ -25,13 +27,18 @@ const rules = {
     }
   }
 }
-
+const router = useRouter()
+const userStore = useUserStore()
 const submitForm = async () => {
-  formRef.value.validate((valid) => {
+  formRef.value.validate(async (valid) => {
     if (valid) {
-      console.log('submit!')
+      const { account, password } = formModel.value
+      await userStore.getUserInfo({ account, password })
+      // console.log(data)
+      ElMessage.success('登录成功')
+      router.replace('/')
     } else {
-      console.log('error submit!')
+      ElMessage.success('信息不完整')
     }
   })
 }

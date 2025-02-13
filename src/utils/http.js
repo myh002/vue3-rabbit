@@ -1,4 +1,6 @@
+import { useUserStore } from '@/stores/user'
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
 
 const httpInstance = axios.create({
   baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -9,6 +11,10 @@ const httpInstance = axios.create({
 httpInstance.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
+    const userStore = useUserStore()
+    if (userStore.userInfo.token) {
+      config.headers.Authorization = `Bearer ${userStore.userInfo.token}`
+    }
     return config
   },
   function (error) {
@@ -27,6 +33,8 @@ httpInstance.interceptors.response.use(
   function (error) {
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
+    // console.log(error)
+    ElMessage.error(error.response.data.message)
     return Promise.reject(error)
   }
 )
