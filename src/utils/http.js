@@ -1,6 +1,8 @@
 import { useUserStore } from '@/stores/user'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+// 这个导入不是vue-router了
+import router from '@/router'
 
 const httpInstance = axios.create({
   baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -35,6 +37,11 @@ httpInstance.interceptors.response.use(
     // 对响应错误做点什么
     // console.log(error)
     ElMessage.error(error.response.data.message)
+    if (error.response.status == 401) {
+      const userStore = useUserStore()
+      userStore.clearUserInfo()
+      router.push('/login')
+    }
     return Promise.reject(error)
   }
 )
