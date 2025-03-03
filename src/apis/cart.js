@@ -8,3 +8,5 @@ export const cartFindNewCartAPI = () => httpInstance.get('/member/cart')
 export const cartDeleteAPI = (ids) => {
   return httpInstance.delete('/member/cart', { data: { ids } })
 }
+
+export const cartMergeAPI = (data) => httpInstance.post('/member/cart/merge', data)

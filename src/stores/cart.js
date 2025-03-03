@@ -54,7 +54,14 @@ export const useCartStore = defineStore(
       cartList.value.filter((item) => item.select).reduce((a, c) => a + c.count * c.price, 0)
     )
 
+    // 清除购物车
+    const clearCart = () => {
+      cartList.value = []
+    }
+
     return {
+      updateCartList,
+      clearCart,
       selectedPrice,
       selectedCount,
       allSelectedChange,
